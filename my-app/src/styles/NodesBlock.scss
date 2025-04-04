@@ -1,0 +1,49 @@
+.nodes-block {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    flex-grow: 1;
+    overflow-y: auto;
+  
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+  
+    .nodes-list {
+      display: grid;
+      gap: 15px;
+    }
+  
+    .node-item {
+      padding: 15px;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+  
+      &:hover {
+        background: #f9f9f9;
+        transform: translateY(-2px);
+      }
+  
+      h3 {
+        margin: 0 0 10px 0;
+      }
+  
+      .node-metrics {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+  
+      .node-status {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+    }
+  }

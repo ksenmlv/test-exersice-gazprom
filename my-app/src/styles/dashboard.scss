@@ -1,0 +1,91 @@
+.dashboard {
+  display: flex;
+  height: 100vh;
+  padding: 20px;
+  gap: 20px; 
+  width: 100%; 
+  max-width: none; 
+  margin: 0;
+  box-sizing: border-box; 
+}
+
+.dashboard-column {
+  flex: 1; 
+  min-width: 0; 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.status-block, .groups-block,
+.nodes-block, .metrics-block,
+.interface-block, .admin-block,
+.apps-block {
+  padding: 20px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  height: auto;
+  flex: 1; 
+  box-sizing: border-box; 
+}
+
+.node-item {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1; 
+  box-sizing: border-box; 
+}
+
+.node-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.node-status {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.node-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+.metric-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-row span:first-child {
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.dashboard-loading,
+.dashboard-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+}
+
+.dashboard-error {
+  color: #ff4d4f;
+}

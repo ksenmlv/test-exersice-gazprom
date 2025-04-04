@@ -1,0 +1,32 @@
+.interface-block {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  
+    h3 {
+      margin-top: 0;
+      color: #333;
+    }
+  
+    .interface-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+  
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  
+    .interface-status {
+      display: inline-block;
+      width: 60px;
+      text-align: center;
+      border-radius: 10px;
+      color: white;
+      font-size: 12px;
+      padding: 2px 5px;
+    }
+  }
