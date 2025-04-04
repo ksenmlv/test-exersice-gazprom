@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="sqlite3.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="browser pragmas query" current="2"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1162"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="0"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="applications" custom_title="0" dock_id="1" table="4,12:mainapplications"/><dock_state state="000000ff00000000fd0000000100000002000003bf000002aefc0100000001fc00000000000003bf0000012800fffffffa000000000100000008fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000012800fffffffb000000160064006f0063006b00420072006f00770073006500320000000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500330000000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500340000000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500350000000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500360000000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500370000000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500380000000000ffffffff0000000000000000000002680000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="applications" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="117"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="groups" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="124"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="groups_nodes" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="53"/><column index="3" value="58"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="users" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="78"/><column index="3" value="78"/><column index="4" value="140"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">SELECT 
+    g.id AS group_id,
+    g.caption AS group_caption,
+    
+    -- Информация о нодах
+    n.id AS node_id,
+    n.caption AS node_caption,
+    
+    --Информация о статусе ноды (цвет и описание)
+    ns.color AS status_color,
+    ns.description AS status_description,
+    
+    -- Информация об интерфейсе ноды
+    i.id AS interface_id,
+    i.caption AS interface_caption,
+    i.status AS interface_status,
+    
+    -- Информация о приложениях
+    a.id AS application_id,
+    a.caption AS application_caption,
+    
+    -- Информация об администраторах
+    u.id AS admin_id,
+    u.firstname AS admin_firstname,
+    u.lastname AS admin_lastname,
+    u.email AS admin_email
+    
+FROM 
+    groups g
+    
+-- Вывод всех данных 	
+LEFT JOIN groups_nodes gn ON g.id = gn.group_id
+LEFT JOIN nodes n ON gn.node_id = n.id  
+LEFT JOIN statuses ns ON n.status = ns.id
+LEFT JOIN interfaces i ON n.interface = i.id
+LEFT JOIN nodes_applications na ON n.id = na.node_id
+LEFT JOIN applications a ON na.application_id = a.id
+LEFT JOIN users u ON n.admin = u.id
+    
+-- Группировка по id групп и нодов	
+ORDER BY group_id, n.id;</sql><current_tab id="0"/></tab_sql></sqlb_project>
